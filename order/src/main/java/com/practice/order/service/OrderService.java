@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.practice.events.BookSoldEvent;
 import com.practice.order.dto.BookDTO;
 import com.practice.order.dto.OrderDTO;
 import com.practice.order.entity.Order;
-import com.practice.order.events.BookSoldEvent;
 import com.practice.order.kafka.BookEventPublisher;
 import com.practice.order.mapper.OrderMapper;
 import com.practice.order.repository.OrderRepository;
@@ -45,6 +45,7 @@ public class OrderService {
                 .soldAt(savedOrder.getSoldAt())
                 .publisherId(savedOrder.getPublisherId())
                 .build();
+        log.debug("saved order is ", savedOrder.toString());
         bookEventPublisher.publishBookSold(event);
         return OrderMapper.toDto(savedOrder);
     }

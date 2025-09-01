@@ -15,6 +15,6 @@ public class InventoryEventPublisher {
     private static final String TOPIC = "stock-below-threshold";
 
     public void publishStockBelowThreshold(StockBelowThresholdEvent event) {
-        kafkaTemplate.send(TOPIC, event.getBookId(), event);
+        kafkaTemplate.send(TOPIC, String.valueOf(event.getBookId()), event);
     }
 }

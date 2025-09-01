@@ -1,5 +1,5 @@
-package com.practice.order.events;
-
+package com.practice.events;
+import java.io.Serializable;
 import java.time.Instant;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookSoldEvent {
+public class BookSoldEvent implements Serializable {
     private Long bookId;
     private String region;
     private Integer quantity;

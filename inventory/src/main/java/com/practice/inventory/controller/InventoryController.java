@@ -27,7 +27,7 @@ public class InventoryController {
     // ➕ Add Stock (POST /inventory/{bookId})
     @PostMapping("/{bookId}")
     public ResponseEntity<InventoryDTO> addStock(
-            @PathVariable String bookId,
+            @PathVariable Long bookId,
             @RequestBody InventoryDTO dto
     ) {
         return ResponseEntity.ok(inventoryService.addToInevntory(bookId, dto));
@@ -36,7 +36,7 @@ public class InventoryController {
     // 🔄 Update Stock (PUT /inventory/{bookId})
     @PutMapping("/{bookId}")
     public ResponseEntity<InventoryDTO> updateStock(
-            @PathVariable String bookId,
+            @PathVariable Long bookId,
             @RequestBody InventoryDTO dto
     ) {
         return ResponseEntity.ok(inventoryService.updateInventory(bookId, dto));
@@ -44,14 +44,14 @@ public class InventoryController {
 
     // 🔍 Get Stock (GET /inventory/{bookId})
     @GetMapping("/{bookId}")
-    public ResponseEntity<List<InventoryDTO>> getInventoryByBook(@PathVariable String bookId) {
+    public ResponseEntity<List<InventoryDTO>> getInventoryByBook(@PathVariable Long bookId) {
         return ResponseEntity.ok(inventoryService.getByBookId(bookId));
     }
 
     // 📋 List Stocks (GET /inventory?region=US)
     @GetMapping
     public ResponseEntity<List<InventoryDTO>> filterInventory(
-            @RequestParam(required = false) String bookId,
+            @RequestParam(required = false) Long bookId,
             @RequestParam(required = false) String region
     ) {
         return ResponseEntity.ok(inventoryService.filterInventory(bookId, region));

@@ -1,4 +1,6 @@
-package com.practice.inventory.event;
+package com.practice.events;
+
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,12 +11,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StockBelowThresholdEvent {
+public class BookSoldEvent {
     private Long bookId;
     private String region;
-    private String format; // "Paperback", "eBook"
-    private Integer availableCount;
-    private Integer threshold;
+    private Integer quantity;
+    private String format;
+    private Instant soldAt;
     private String publisherId;
-    private String message;
 }

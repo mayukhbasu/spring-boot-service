@@ -31,7 +31,7 @@ public class Inventory {
     private Long id;
 
     @Column(nullable = false)
-    private String bookId; // Can be UUID or Long stringified
+    private Long bookId; // Can be UUID or Long stringified
 
     @Column(nullable = false)
     private String region; // e.g., US, IN

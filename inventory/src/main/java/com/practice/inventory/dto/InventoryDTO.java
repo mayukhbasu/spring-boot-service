@@ -15,7 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class InventoryDTO {
     private Long id;
-    private String bookId;
+    private Long bookId;
     private String region;
     private String format;
     private Integer availableCount;
