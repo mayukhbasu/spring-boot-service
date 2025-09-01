@@ -111,6 +111,9 @@ public class InventoryService {
         if (newAvailable < 0) {
             throw new IllegalStateException("Not enough stock for bookId=" + bookId);
         }
+        if(newAvailable < inventory.getThreshold()) {
+            triggerStockBelowEventIfNeeded(inventory);
+        }
 
         inventory.setAvailableCount(newAvailable);
         inventory.setUpdatedAt(Instant.now());
