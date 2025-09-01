@@ -108,10 +108,12 @@ public class InventoryService {
         System.out.println("Inventory is count "+inventory.getAvailableCount());
         int newAvailable = inventory.getAvailableCount() - quantity;
         log.info("Available count {}", newAvailable);
+        log.info("threshold value is {}", inventory.getThreshold());
         if (newAvailable < 0) {
             throw new IllegalStateException("Not enough stock for bookId=" + bookId);
         }
         if(newAvailable < inventory.getThreshold()) {
+            
             triggerStockBelowEventIfNeeded(inventory);
         }
 
